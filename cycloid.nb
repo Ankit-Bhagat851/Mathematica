@@ -1,0 +1,25 @@
+AbelODE = T = 1/sqrt[2g] ∫y0 h[z]*dz/ √(y-z)
+
+dsdy = DSolveValue [AbelODE, h[y], y]
+
+x[y_] - Integrate[dxdy, {y, 0, y}, Assumptions → (2g (T^2)) / (π^2y) > 1&& y > 0]
+
+Show [ParametricPlot[{{x[y], y}, {-x[y], y}} /. {g → + 9.8, T → 2}, {y, 0, (2 (9.8) 2^2) / π^2}], ImageSize → Medium)
+
+c[θ_] = (gT^2) / π^2 (sin(0) + 0, 1 - Cos[θ]};
+θ' == +- Fullsimplify [Sqrt[2g (Last[c[θMax]] - Last(c[0]])] /Sqrt(c'[0].c'[0]], g>0 && T> 0]
+
+Manipulate[Module [ {g = 9.81, eqn, sol, pos}, SeedRandom [ 12345); pos - Switch(typ, 2, RandomReal [{.5, 2.85), 6], 1, {.5, 1.25, 1.75, 2.1, 2.4, 2.75}];
+eqn = sin[s[t]] (g-s' [t]^2) + 2 (-1 + Cos[s[t]]) s" [t] = 0; 
+sol[sθ_] := NDSolve[ {eqn, s[∈] = 50, s'[∈] = 0}, s, {t, 0, tMax}, MaxSteps → ∞] [[1]]; 
+Graphics3D[ {
+(*rails*) ParametricPlot3D[ {s - Sin[s] - π, #, -1 + Cos[s]} &/@ Range[ 0, 2.5, .5],{s,0,2*π}, Plotstyle → {Gray, Tube [.02]}] [[1]],
+(*frame*) (Line [{{-π,0,0}, {–π, 2.5, 0}}l, Line [{(π, 0, 0), (π, 2.5, 0}}), DotDashed, Line [{{0, 0, -2}, {0, 2.5, -2}}]}, 
+(*beads*) 
+MapIndexed[{{Red,Green, Cyan, Magenta, Orange, Yellow} [[#2[[1]]]], Specularity (White, 50],
+Sphere[{-π +s[time] - Sin[s[time]], -.5 #2[[1]] + 3, -1+ Cos[s[time]]} /. sol[#1], .12]} &, pos] }, 
+Axes → None, BoxStyle → Dashed, PlotRange → {{-3.5, 3.5}, {-.25, 2.75}, {-2.25, .25}}, ViewPoint → {.5, -2.4, 1}, ImageSize →525]],
+Row [ {Control[{{typ, 1, "initial positions"}, {1 → "ordered", 2 → "random"}}], Spacer [10], 
+Control[{{time, 0, "animation"}, 0, tMax, 0.002, Trigger, DisplayAllSteps → True,
+AppearanceElements → ["StepLeftButton", "StepRightButton", "PlayPauseButton", "ResetButton"}}]}], {{tMax, 100}, ControlType → None}, {{€, 1*^-3}, ControlType → None}, 
+TrackedSymbols »» Manipulate, SynchronousUpdating → False]
