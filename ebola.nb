@@ -1,0 +1,42 @@
+Manipulate[
+Module [ { 
+sol = NDSolve[{X'[t] = a - b+X[t] - c * V [t] +X[t], G'[t] = c * V[t] *X[t] - d*G[t] *T[t] -e*G[t] + (f*c*a) / (e*g*b) - (f*c*a*d) / (e* (g*d*b+f*c*h)),
+V'[t] = f*G[t] - g * V[t], T'[t] == d*G[t] *T[t] - h*T[t], X[0] == 100, G[0] = 0.05, V[0] = 0.05, T[0] = 1}, {X, G, V, T}, {t, 0, 25}]}, 
+Plot [Evaluate[{X[t] /.sol, V[t] /.sol, T[t] /.sol}], {t, 1, 100}, PlotRange → {0, 200}] ], 
+(a, 0.1, 10}, {b, 0.02, 0.03}, {C, 0.001, 0.02}, {d, 0.1, 0.2}, {e, 0.2, 0.7}, {f, 20, 50}, {g, 2.4, 3.8}, {h, 0.3, 0.5}]
+
+#Case 1
+
+Manipulate[
+Module [ { 
+sol = NDSolve[{X'[t] = a - b+X[t] - c * V [t] +X[t], G'[t] = c * V[t] *X[t] - d*G[t] *T[t] -e*G[t] + 4.6864 - 2.8119,
+V'[t] = f*G[t] - g * V[t], T'[t] == d*G[t] *T[t] - h*T[t], X[0] == 100, G[0] = 0.05, V[0] = 0.05, T[0] = 1}, {X, G, V, T}, {t, 0, 25}]}, 
+Plot [Evaluate[{X[t] /.sol, V[t] /.sol, T[t] /.sol}], {t, 1, 100}, PlotRange → {0, 200}] ], 
+(a, 0.1, 10}, {b, 0.02, 0.03}, {C, 0.001, 0.02}, {d, 0.1, 0.2}, {e, 0.2, 0.7}, {f, 20, 50}, {g, 2.4, 3.8}, {h, 0.3, 0.5}]
+
+#Case 2
+
+Manipulate[
+Module [ { 
+sol = NDSolve[{X'[t] = a - b+X[t] - c * V [t] +X[t], G'[t] = c * V[t] *X[t] - d*G[t] *T[t] -e*G[t] + 2.8119 - 0.8436,
+V'[t] = f*G[t] - g * V[t], T'[t] == d*G[t] *T[t] - h*T[t], X[0] == 100, G[0] = 0.05, V[0] = 0.05, T[0] = 1}, {X, G, V, T}, {t, 0, 25}]}, 
+Plot [Evaluate[{X[t] /.sol, V[t] /.sol, T[t] /.sol}], {t, 1, 100}, PlotRange → {0, 200}] ], 
+(a, 0.1, 10}, {b, 0.02, 0.03}, {C, 0.001, 0.02}, {d, 0.1, 0.2}, {e, 0.2, 0.7}, {f, 20, 50}, {g, 2.4, 3.8}, {h, 0.3, 0.5}]
+
+#Case 3
+
+Manipulate[
+Module [ { 
+sol = NDSolve[{X'[t] = a - b+X[t] - c * V [t] +X[t], G'[t] = c * V[t] *X[t] - d*G[t] *T[t] -e*G[t] + 0.9373 - 0.5207,
+V'[t] = f*G[t] - g * V[t], T'[t] == d*G[t] *T[t] - h*T[t], X[0] == 100, G[0] = 0.05, V[0] = 0.05, T[0] = 1}, {X, G, V, T}, {t, 0, 25}]}, 
+Plot [Evaluate[{X[t] /.sol, V[t] /.sol, T[t] /.sol}], {t, 1, 100}, PlotRange → {0, 200}] ], 
+(a, 0.1, 10}, {b, 0.02, 0.03}, {C, 0.001, 0.02}, {d, 0.1, 0.2}, {e, 0.2, 0.7}, {f, 20, 50}, {g, 2.4, 3.8}, {h, 0.3, 0.5}]
+
+#Case 4
+
+Manipulate[
+Module [ { 
+sol = NDSolve[{X'[t] = a - b+X[t] - c * V [t] +X[t], G'[t] = c * V[t] *X[t] - d*G[t] *T[t] -e*G[t] + 0.2464 - 0.1760,
+V'[t] = f*G[t] - g * V[t], T'[t] == d*G[t] *T[t] - h*T[t], X[0] == 100, G[0] = 0.05, V[0] = 0.05, T[0] = 1}, {X, G, V, T}, {t, 0, 25}]}, 
+Plot [Evaluate[{X[t] /.sol, V[t] /.sol, T[t] /.sol}], {t, 1, 100}, PlotRange → {0, 200}] ], 
+(a, 0.1, 10}, {b, 0.02, 0.03}, {C, 0.001, 0.02}, {d, 0.1, 0.2}, {e, 0.2, 0.7}, {f, 20, 50}, {g, 2.4, 3.8}, {h, 0.3, 0.5}]
